@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="inputContainer === false" class="container one">
     <h3 :class="props.task.is_complete ? 'clase2' : 'clase1'">
       {{ task.title }}
     </h3>
@@ -9,6 +9,15 @@
 
     <button @click="deleteTask">Delete</button>
     <button @click="completeTask">Completado</button>
+    <button @click="showInput">Editar</button>
+  </div>
+  <div v-else class="container edit">
+    <input type="text" v-model="currentTaskTitle" />
+    <input type="text" v-model="currentTaskDescription" />
+    <button @click="deleteTask">Delete</button>
+    <button @click="completeTask">Completado</button>
+
+    <button @click="editTask">Edit Task</button>
   </div>
 </template>
 
@@ -18,7 +27,7 @@ import { useTaskStore } from "../stores/task";
 import { supabase } from "../supabase";
 //definir emits para pasar lógica y eventos hacia componentes padres
 
-const emit = defineEmits(["childComplete"]);
+const emit = defineEmits(["childComplete", "editChild"]);
 //funcion para completar tarea que se encarga de ennviar la info al padre
 
 const completeTask = () => {
@@ -38,6 +47,34 @@ const deleteTask = async () => {
 
 const toggleButton = () => {
   tareaCompletada.value = !tareaCompletada.value;
+};
+
+// funcion editar
+const inputContainer = ref(false);
+const currentTaskTitle = ref("");
+const currentTaskDescription = ref("");
+const showInput = () => {
+  console.log("click");
+  inputContainer.value = !inputContainer.value;
+  currentTaskTitle.value = props.task.title;
+  currentTaskDescription.value = props.task.description;
+};
+
+const editTask = () => {
+  if (
+    currentTaskTitle.value.length === 0 ||
+    currentTaskDescription.value.length === 0
+  ) {
+    alert("Title or Description can not be empty");
+  } else {
+    inputContainer.value = !inputContainer.value;
+    taskStore.editTaskSupabase(
+        currentTaskTitle.value,
+        props.task.id,
+      currentTaskDescription.value
+    );
+    emit("editChild");
+  }
 };
 </script>
 
