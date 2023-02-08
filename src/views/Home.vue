@@ -8,7 +8,7 @@
     </div>
     <NewTask />
     <h1>Tasks:</h1>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
+    <TaskItem v-for="task in tasks" :key="task.id" :task="task" @child-complete="completeTaskSupabase"/>
   </div>
 </template>
 
@@ -35,6 +35,17 @@ getTasks();
 onUpdated(() => {
   getTasks();
 });
+
+//funcion para completar tarea conectandose a supabase
+ const completeTaskSupabase = async (taskObject) => {
+//initial log to verify that is connected
+  console.log("click from home")
+let changeTasckBooleanValue = !taskObject.is_complete;
+let taskId = taskObject.id;
+
+console.log(changeTasckBooleanValue, taskId)
+await taskStore.completeTask(changeTasckBooleanValue, taskId)
+}
 </script>
 
 <style></style>

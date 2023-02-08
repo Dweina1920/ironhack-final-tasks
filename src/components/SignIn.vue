@@ -27,50 +27,45 @@
             required
           />
         </div>
-
-        <button class="button" type="submit">Log In</button>
-        <p>
-          Have an account?
-          <PersonalRouter
-            :route="route"
-            :buttonText="buttonText"
-            class="sign-up-link"
-          />
-        </p>
       </div>
+      <button class="button" type="submit">Log In</button>
     </form>
+
+    <p>
+      Don't have an account?
+      <PersonalRouter
+        :route="route"
+        :buttonText="buttonText"
+        class="sign-up-link"
+      />
+    </p>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
-import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-
-
 
 // Route Variables
 const route = "/auth/signup";
 const buttonText = "Sign Up";
+// Router to push user once SignedUp to Log In
+const redirect = useRouter();
 
 // Input Fields
 const email = ref("");
 const password = ref("");
 
-
 // Error Message
 const errorMsg = ref("");
-
-// Router to push user once SignedUp to Log In
-const redirect = useRouter();
 
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const signIn = async () => {
   try {
     // calls the user store and send the users info to backend to logIn
-    const user = await useUserStore().signUp(email.value, password.value);
+    const user = await useUserStore().signIn(email.value, password.value);
     // redirects user to the homeView
     redirect.push({ path: "/" });
   } catch (error) {
