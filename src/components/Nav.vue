@@ -52,7 +52,12 @@ const redirect = useRouter();
 const signOut = async () => {
   try{
     // call the user store and send the users info to backend to signOut
+    await useUserStore().signOut();
+    // redirects user to the homeView
+   
     // then redirect user to the homeView
+    redirect.push({ path: "/auth/login" });
+
   } catch (error) {}
 };
 

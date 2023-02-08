@@ -24,8 +24,12 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 
 ## Seguimiento del proyecto:
 
-### 18 agosto:
-* Implentar HTML y CSS del Sign Up y Sing In
+### 07 Febrero:
+* [x] Sign Up y Sing In
+* [x] Log Out, Log In
+* [x] Funcionalidad tarea completada. 
+* [x] Crear repositorio y vincularlo a carpeta.
+
 
 ### 19 agosto:
 * Implentar la logica para el Sign Up, Sign In y Sing Out
