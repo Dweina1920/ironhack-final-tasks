@@ -19,3 +19,6 @@
 /* Home view */
 
 /* Account View */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

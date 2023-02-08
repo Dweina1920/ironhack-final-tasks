@@ -18,6 +18,7 @@
     <button @click="completeTask">Completado</button>
 
     <button @click="editTask">Edit Task</button>
+    
   </div>
 </template>
 
@@ -67,7 +68,7 @@ const editTask = () => {
   ) {
     alert("Title or Description can not be empty");
   } else {
-    inputContainer.value = !inputContainer.value;
+      inputContainer.value = !inputContainer.value;
     taskStore.editTaskSupabase(
         currentTaskTitle.value,
         props.task.id,
