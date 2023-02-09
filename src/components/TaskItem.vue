@@ -1,7 +1,7 @@
 <template>
-  <div v-if="inputContainer === false" class="container one  ">
+  <div v-if="inputContainer === false" class="container one">
     <div
-      class="w-full h-60 bg-white border  rounded-xl  shadow-lg shadow-turquesa"
+      class="w-full h-60 bg-white border rounded-xl shadow-lg shadow-turquesa"
     >
       <div class="p-4 h-full flex flex-col justify-around items-center">
         <a href="#">
@@ -103,26 +103,27 @@
   </div>
   <div v-else class="container edit">
     <div
-      class="max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700"
+      class="w-full h-60 bg-white border rounded-xl shadow-lg shadow-turquesa"
     >
-      <div class="p-4 flex flex-col justify-center items-center">
+      <div class="p-4 h-full flex flex-col justify-around items-center">
         <a href="#">
           <input
             type="text"
             v-model="currentTaskTitle"
-            class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl"
+            class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl w-full border p-2"
           />
         </a>
         <input
           type="text"
           v-model="currentTaskDescription"
-          class="my-2 font-normal text-gray-700 text-center dark:text-gray-400 border rounded-xl"
+          class="my-2 font-normal text-gray-700 text-center dark:text-gray-400 border rounded-xl w-full border p-2"
         />
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
           <button
             @click="deleteTask"
+            disabled
             type="button"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 bg-turquesa"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +132,7 @@
               height="44"
               viewBox="0 0 24 24"
               stroke-width="1.5"
-              stroke="#ff4500"
+              stroke="turquesa"
               fill="none"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -145,9 +146,9 @@
             </svg>
           </button>
           <button
-            @click="showInput"
+            @click="editTask"
             type="button"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white hover:text-white hover:bg-verde dark:focus:bg-gray-700"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -171,8 +172,9 @@
           </button>
           <button
             @click="completeTask"
+            disabled
             type="button"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-verde-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 bg-turquesa"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +183,7 @@
               height="44"
               viewBox="0 0 24 24"
               stroke-width="1.5"
-              stroke="#946E83"
+              stroke="turquesa"
               fill="none"
               stroke-linecap="round"
               stroke-linejoin="round"

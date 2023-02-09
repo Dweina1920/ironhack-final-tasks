@@ -1,29 +1,33 @@
 <template>
-  
-  <nav>
+  <nav class="flex row justify-around items-center w-full mt-10">
+    <div>
+      <img src="../img/logo.png" class="w-20" />
+    </div>
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    
-    <router-link to="/">
-      Home
-    </router-link>
 
-    <ul>
-        <li>
-          <router-link to="/">Task Manager</router-link>
-        </li>
+    <ul class="flex row justify-around items-center gap-16">
+      <li><router-link to="/"> Home </router-link></li>
+      <li>
+        <router-link to="/">Task Manager</router-link>
+      </li>
 
-        <li>
-          <router-link to="/account">Your Account</router-link>
-        </li>
+      <li>
+        <router-link to="/account">Your Profile</router-link>
+      </li>
     </ul>
 
     <div>
-      <ul>
+      <ul class="flex flex-col justify-around items-center gap-4">
         <li class="log-out-welcome">
           <p>Welcome, user</p>
         </li>
         <li>
-          <button @click="signOut" class="button">Log out</button>
+          <button
+            @click="signOut"
+            class="button border p-2 rounded-xl bg-marron hover:bg-verde"
+          >
+            Log out
+          </button>
         </li>
       </ul>
     </div>
@@ -35,7 +39,7 @@
 import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
-import { ref } from 'vue';
+import { ref } from "vue";
 
 //constant to save a variable that will hold the use router method
 const route = "/";
@@ -52,37 +56,15 @@ const userEmail = getUser.email;
 const redirect = useRouter();
 
 const signOut = async () => {
-  try{
+  try {
     // call the user store and send the users info to backend to signOut
     await useUserStore().signOut();
     // redirects user to the homeView
-   
+
     // then redirect user to the homeView
     redirect.push({ path: "/auth/login" });
-
   } catch (error) {}
 };
-
 </script>
 
-<style>
-.navbar-img {
-  width: 90px;
-}
-
-nav {
-  background-color: lightgray;
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  align-items: center;
-}
-
-nav ul {
-  list-style: none;
-  padding-inline-start: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-</style>
+<style></style>

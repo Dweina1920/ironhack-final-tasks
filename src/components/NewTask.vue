@@ -1,24 +1,34 @@
 <template>
-  <h1>Add a new Task</h1>
-  <div v-if="showErrorMessage">
-    <p class="error-text">{{ errorMessage }}</p>
-  </div>
-  <div>
-    <div class="input-field">
-      <input
-        type="text"
-        placeholder="Add a Task Title - Listen to Kendrick Lamar"
-        v-model="name"
-      />
+  <div class="flex flex-col justify-center items-center">
+    <div v-if="showErrorMessage">
+      <p class="error-text">{{ errorMessage }}</p>
     </div>
-    <div class="input-field">
-      <input
-        type="text"
-        placeholder="Add a Task Description - Look up Kendrick Lamar's FEAR album on spotify and listen to the whole album."
-        v-model="description"
-      />
+    <div
+      class="w-96 p-6 border flex flex-col justify-around gap-8 m-12 rounded-xl"
+    >
+      <div class="input-field">
+        <input
+          class="w-full border p-6 rounded-xl"
+          type="text"
+          placeholder="Add a Task Title - Listen to Kendrick Lamar"
+          v-model="name"
+        />
+      </div>
+      <div class="input-fiel">
+        <input
+          class="w-full border p-6 rounded-xl"
+          type="text"
+          placeholder="Add a Task Description - Look up Kendrick Lamar's FEAR album on spotify and listen to the whole album."
+          v-model="description"
+        />
+      </div>
+      <button
+        @click="addTask"
+        class="button w-full p-2 rounded-xl bg-turquesa text-white hover:bg-verdeoscuro hover: text-[#064e3b]"
+      >
+        Add
+      </button>
     </div>
-    <button @click="addTask" class="button">Add</button>
   </div>
 </template>
 

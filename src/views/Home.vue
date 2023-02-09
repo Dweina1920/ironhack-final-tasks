@@ -2,12 +2,18 @@
   <div class="wrapper">
     <Nav />
 
-    <div class="content">
-      <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link>
+    <div
+      class="content flex flex-col justify-center items-center mt-8 leading-10"
+    >
+      <p class="text-5xl font-extrabold text-turquesa p-12">
+        Are you ready to do your tasks?
+      </p>
+      <p class="text-4xl font-extrabold text-marronoscuro">
+        Write them down here!
+      </p>
     </div>
     <NewTask />
-    <h1>Tasks:</h1>
+
     <div class="flex flex-col justify-center items-center">
       <div
         class="w-9/12 flex inline-grid lg:grid-cols-3 gap-20 items-center sm:grid-cols-1"
