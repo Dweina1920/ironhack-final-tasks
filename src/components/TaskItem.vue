@@ -1,24 +1,199 @@
 <template>
-  <div v-if="inputContainer === false" class="container one">
-    <h3 :class="props.task.is_complete ? 'clase2' : 'clase1'">
-      {{ task.title }}
-    </h3>
-    <h3 :class="props.task.is_complete ? 'clase2' : 'clase1'">
-      {{ task.description }}
-    </h3>
-
-    <button @click="deleteTask">Delete</button>
-    <button @click="completeTask">Completado</button>
-    <button @click="showInput">Editar</button>
+  <div v-if="inputContainer === false" class="container one  ">
+    <div
+      class="w-full h-60 bg-white border  rounded-xl  shadow-lg shadow-turquesa"
+    >
+      <div class="p-4 h-full flex flex-col justify-around items-center">
+        <a href="#">
+          <h5
+            :class="
+              props.task.is_complete
+                ? 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white  line-through'
+                : 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white'
+            "
+          >
+            {{ task.title }}
+          </h5>
+        </a>
+        <p
+          :class="
+            props.task.is_complete
+              ? 'my-2 font-normal text-gray-700 text-center dark:text-gray-400  line-through'
+              : 'my-2 font-normal text-gray-700 text-center dark:text-gray-400'
+          "
+        >
+          {{ task.description }}
+        </p>
+        <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
+          <button
+            @click="deleteTask"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-l-lg hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-trash"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#615055"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="10" y1="11" x2="10" y2="17" />
+              <line x1="14" y1="11" x2="14" y2="17" />
+              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            </svg>
+          </button>
+          <button
+            @click="showInput"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-marron-900 hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-edit"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#615055"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
+              />
+              <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+              <line x1="16" y1="5" x2="19" y2="8" />
+            </svg>
+          </button>
+          <button
+            @click="completeTask"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-r-md hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-checks"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#615055"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 12l5 5l10 -10" />
+              <path d="M2 12l5 5m5 -5l5 -5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div v-else class="container edit">
-    <input type="text" v-model="currentTaskTitle" />
-    <input type="text" v-model="currentTaskDescription" />
-    <button @click="deleteTask">Delete</button>
-    <button @click="completeTask">Completado</button>
-
-    <button @click="editTask">Edit Task</button>
-    
+    <div
+      class="max-w-sm bg-white border border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div class="p-4 flex flex-col justify-center items-center">
+        <a href="#">
+          <input
+            type="text"
+            v-model="currentTaskTitle"
+            class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl"
+          />
+        </a>
+        <input
+          type="text"
+          v-model="currentTaskDescription"
+          class="my-2 font-normal text-gray-700 text-center dark:text-gray-400 border rounded-xl"
+        />
+        <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
+          <button
+            @click="deleteTask"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-trash"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#ff4500"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="10" y1="11" x2="10" y2="17" />
+              <line x1="14" y1="11" x2="14" y2="17" />
+              <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+              <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+            </svg>
+          </button>
+          <button
+            @click="showInput"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-edit"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#009988"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"
+              />
+              <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+              <line x1="16" y1="5" x2="19" y2="8" />
+            </svg>
+          </button>
+          <button
+            @click="completeTask"
+            type="button"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-r-md hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-checks"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#946E83"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 12l5 5l10 -10" />
+              <path d="M2 12l5 5m5 -5l5 -5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -68,10 +243,10 @@ const editTask = () => {
   ) {
     alert("Title or Description can not be empty");
   } else {
-      inputContainer.value = !inputContainer.value;
+    inputContainer.value = !inputContainer.value;
     taskStore.editTaskSupabase(
-        currentTaskTitle.value,
-        props.task.id,
+      currentTaskTitle.value,
+      props.task.id,
       currentTaskDescription.value
     );
     emit("editChild");

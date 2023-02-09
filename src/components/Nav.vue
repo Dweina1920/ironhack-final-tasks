@@ -1,6 +1,8 @@
 <template>
+  
   <nav>
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
+    
     <router-link to="/">
       Home
     </router-link>

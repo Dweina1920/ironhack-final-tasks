@@ -1,14 +1,26 @@
 <template>
   <div class="wrapper">
     <Nav />
- 
+
     <div class="content">
       <h3>Your account:</h3>
       <router-link to="/account">Account</router-link>
     </div>
     <NewTask />
     <h1>Tasks:</h1>
-    <TaskItem v-for="task in tasks" :key="task.id" :task="task" @child-complete="completeTaskSupabase" @editCild="getTasks"/>
+    <div class="flex flex-col justify-center items-center">
+      <div
+        class="w-9/12 flex inline-grid lg:grid-cols-3 gap-20 items-center sm:grid-cols-1"
+      >
+        <TaskItem
+          v-for="task in tasks"
+          :key="task.id"
+          :task="task"
+          @child-complete="completeTaskSupabase"
+          @editCild="getTasks"
+        />
+      </div>
+    </div>
     <!--<TaskItem  class="taskBox" v-for="task in tasks" :key="task.id" :task="task" @child-complete="completeTaskSupabase" @child-edit="editTaskSupabase"/>-->
   </div>
 </template>
@@ -38,15 +50,15 @@ onUpdated(() => {
 });
 
 //funcion para completar tarea conectandose a supabase
- const completeTaskSupabase = async (taskObject) => {
-//initial log to verify that is connected
-  console.log("click from home")
-let changeTasckBooleanValue = !taskObject.is_complete;
-let taskId = taskObject.id;
+const completeTaskSupabase = async (taskObject) => {
+  //initial log to verify that is connected
+  console.log("click from home");
+  let changeTasckBooleanValue = !taskObject.is_complete;
+  let taskId = taskObject.id;
 
-console.log(changeTasckBooleanValue, taskId)
-await taskStore.completeTask(changeTasckBooleanValue, taskId)
-}
+  console.log(changeTasckBooleanValue, taskId);
+  await taskStore.completeTask(changeTasckBooleanValue, taskId);
+};
 </script>
 
 <style></style>
