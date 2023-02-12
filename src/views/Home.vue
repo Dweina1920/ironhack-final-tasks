@@ -3,7 +3,7 @@
     <Nav />
 
     <div
-      class="content flex flex-col justify-center items-center mt-8 leading-10"
+      class="class-test"
     >
       <p class="text-5xl font-extrabold text-turquesa p-12">
         Are you ready to do your tasks?
@@ -67,7 +67,12 @@ const completeTaskSupabase = async (taskObject) => {
 };
 </script>
 
-<style></style>
+<style>
+ .class-test{
+  @apply  flex flex-col justify-center items-center mt-8 leading-10
+ }
+
+</style>
 
 <!-- 
 **Hints**

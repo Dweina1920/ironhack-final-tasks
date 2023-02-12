@@ -1,7 +1,7 @@
 <template>
-  <nav class="flex row justify-around items-center w-full mt-10">
+  <nav class="flex row justify-around items-center w-full ">
     <div>
-      <img src="../img/logo.png" class="w-20" />
+      <img src="../img/attachment_28246785-removebg-preview (1).png" class="w-60" />
     </div>
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
 
@@ -19,7 +19,7 @@
     <div>
       <ul class="flex flex-col justify-around items-center gap-4">
         <li class="log-out-welcome">
-          <p>Welcome, user</p>
+          <p>Welcome, {{ getEmail }}</p>
         </li>
         <li>
           <button
@@ -47,10 +47,11 @@ const buttonText = "Todo app";
 
 // constant to save a variable that will get the user from store with a computed function imported from vue
 // const getUser = computed(() => useUserStore().user);
-const getUser = useUserStore().user;
+const getEmail = useUserStore().user.email;
+console.log(getEmail)
 
 // constant that calls user email from the useUSerStore
-const userEmail = getUser.email;
+;
 
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 const redirect = useRouter();

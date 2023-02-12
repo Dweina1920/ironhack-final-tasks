@@ -52,7 +52,11 @@ const editTaskSupabase = async (title, id, description) => {
 
 }
 
-  return { tasksArr, fetchTasks, addTask, deleteTask, completeTask, editTaskSupabase };
+//edit profile
+
+
+
+  return { tasksArr, fetchTasks, addTask, deleteTask, completeTask, editTaskSupabase};
 }
 
 
