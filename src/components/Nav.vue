@@ -1,7 +1,7 @@
 <template>
-  <nav class="flex row justify-around items-center w-full ">
+  <nav class="flex row justify-around items-center w-full  mt-8">
     <div>
-      <img src="../img/attachment_28246785-removebg-preview (1).png" class="w-60" />
+      <img src="../img/logo-04.png" class="w-20" />
     </div>
     <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
 

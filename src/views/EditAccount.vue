@@ -1,14 +1,11 @@
 <template>
-  <Nav />
-
-  <h1>Name: {{ username }}</h1>
-
+    <Nav />
   <div class="mt-16 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
       <div class="">
         <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-            <div class="text-gray-600">
+            <div class="text-a flex flex-col justify-center items-center m-12">
               <img
                 :src="
                   avatar_url
@@ -17,10 +14,14 @@
                 "
                 alt="Profile picture"
               />
+
+              <!--falta la logica del cambio de imagen-->
+              <input type="file" @change="fileUploaded" class="mt-4 bg-verde rounded-xl"/>
+                <button @click="upload" class=" bg-verdeoscuro p-2 mt-4 border-verdeoscuro rounded-xl w-full" >Upload</button>
             </div>
 
             <div class="lg:col-span-2">
-              <p class="font-medium text-lg">Personal Details</p>
+              <p class="font-medium text-lg text-center">Personal Details</p>
               <div
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
@@ -64,7 +65,7 @@
                     <button
                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                     >
-                      <router-link to="/editaccount">Edit</router-link>
+                      Submit
                     </button>
                   </div>
                 </div>
@@ -75,47 +76,27 @@
       </div>
     </div>
   </div>
+
+  <Footer />
 </template>
 
 <script setup>
-import { supabase } from "../supabase";
-import { onMounted, ref, toRefs } from "vue";
-import { useUserStore } from "../stores/user";
 import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue";
 
-const userStore = useUserStore();
 
-const loading = ref(false);
-const username = ref(null);
-const website = ref(null);
-const avatar_url = ref(null);
 
-onMounted(() => {
-  getProfile();
-});
+      function fileUploaded(event) {
+        console.log(event.target.files[0].name) //here is the original name
+        this.selectedFile = event.target.files[0]
+      }
 
-async function getProfile() {
-  await userStore.fetchUser();
-  username.value = userStore.profile.username;
-  avatar_url.value = userStore.profile.avatar_url;
-}
+     function upload() {
+       let fd = new FormatData()
+       fd.append('image', this.selectedFile, 'GiveItAnotherNameHere')
+       axios.post('url', fd) //upload it to backend
+      }
 
-async function signOut() {
-  try {
-    loading.value = true;
-    let { error } = await supabase.auth.signOut();
-    if (error) throw error;
-  } catch (error) {
-    alert(error.message);
-  } finally {
-    loading.value = false;
-  }
-}
 </script>
 
-<style>
-img {
-  width: 200px;
-  border-radius: 50%;
-}
-</style>
+<style scoped></style>

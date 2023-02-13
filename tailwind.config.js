@@ -28,6 +28,7 @@ module.exports = {
       'marronmedio' : '#615055',
       'verdeoscuro' : '#CDD5D1',
       'turquesa' : '#0f766e',
+      'azul-login' : '#388bb3'
      }
     },
   },
