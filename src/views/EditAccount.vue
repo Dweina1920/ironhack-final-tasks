@@ -5,8 +5,8 @@
       <div class="">
         <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-            <div class="text-a flex flex-col justify-center items-center m-12">
-              <img
+            <div class=" text-a flex flex-col justify-center items-center m-12">
+              <img class="profile-img"
                 :src="
                   avatar_url
                     ? avatar_url
@@ -18,16 +18,12 @@
               <!--falta la logica del cambio de imagen-->
               <input
                 type="file"
-                @change="fileUploaded"
+                name="avatar_url"
+                @change="uploadAvatar"
                 class="mt-4 bg-verde rounded-xl"
                 accept=".jpg, .jpeg, .png, .gif"
               />
-              <button
-                @change="uploadAvatar"
-                class="bg-verdeoscuro p-2 mt-4 border-verdeoscuro rounded-xl w-full"
-              >
-                Upload
-              </button>
+       
             </div>
 
             <div class="lg:col-span-2">
@@ -156,7 +152,43 @@ async function editProfileSupabase() {
 
 
 
+//funcion para actulizar imagen de perfil
+// -------------------------------------------
+// variables
+const prop = defineProps(['path', 'size'])
+const { path, size } = toRefs(prop)
 
+const emit = defineEmits(['upload', 'update:path'])
+const uploading = ref(false)
+const src = ref('')
+const files = ref()
+
+
+const uploadAvatar = async (evt) => {
+  files.value = evt.target.files
+  try {
+    uploading.value = true
+    if (!files.value || files.value.length === 0) {
+      throw new Error('You must select an image to upload.')
+    }
+
+    const file = files.value[0]
+    const fileExt = file.name.split('.').pop()
+    const filePath = `${Math.random()}.${fileExt}`
+
+    let { error: uploadError } = await supabase.storage.from('/public/avatars').upload(filePath, file, { upsert: false});
+    avatar_url.value = "https://zkxclgazccxtzdbcydyq.supabase.co/storage/v1/object/public/avatars/" + filePath;
+
+
+    if (uploadError) throw uploadError
+    emit('update:path', filePath)
+    emit('upload')
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    uploading.value = false
+  }
+};
 </script>
 
 <style scoped></style>

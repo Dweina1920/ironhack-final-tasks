@@ -25,13 +25,40 @@
           {{ task.description }}
         </p>
 
-  
-
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
-          <button
+
+
+
+
+<!-- popup opcion borrar -->
+<div  v-if="showModal" class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800">
+  <div class="bg-white rounded-lg w-1/2">
+    <div class="flex flex-col items-start p-4">
+     
+      <hr>
+      <div class="flex row justify-between gap-10 items-center p-5">
+        <p class="text-gray-900 font-medium text-xl ml-16">Are you sure you want to delete the task?</p>
+       
+      <hr>
+      <div class="ml-auto">
+        <button  @click="deleteTask" class="bg-turquesa hover:bg-turquesa text-white font-bold py-2 px-4 rounded">
+          Agree
+        </button>
+        <button @click="showModalToggleDelete" class="bg-transparent hover:bg-gray-500 text-turquesa font-semibold hover:text-white py-2 px-4 border border-turquesa hover:border-transparent rounded">
+          Close
+        </button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--si no hago el v-if no desparece el boton de borrar -->
+
+          <button v-else
             @click="showModalToggleDelete"
             type="button"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-l-lg hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            class="deletebutton inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-l-lg hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +80,11 @@
               <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
             </svg>
           </button>
+          <!--opcion borrar -->
+
+
+
+          
           <button
             @click="showInput"
             type="button"
@@ -123,7 +155,6 @@
         />
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
           <button
-            @click="deleteTask"
             disabled
             type="button"
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700 bg-turquesa"
@@ -195,31 +226,23 @@
               <path d="M7 12l5 5l10 -10" />
               <path d="M2 12l5 5m5 -5l5 -5" />
             </svg>
-
           </button>
-          <div class="modal fixed  bg-verde " v-if="showModal">
-  
+
+          <!--  <div class="modal fixed  bg-verde " >
   <h2>Are you sure you want to delete this task?</h2>
   <button @click="deleteTask">Yes, of course!</button>
   <button @click="showModalToggleDelete">Cancel</button>
-</div>
+</div>  -->
         </div>
-        
       </div>
-
-  
     </div>
-
-</div>
+  </div>
 
   <!--POPUP DELETE-->
 
-  <div class="modal  bg-verde t-2/4 l-2/4" v-if="showModal">
   
-  <h2>Are you sure you want to delete this task?</h2>
-  <button @click="deleteTask">Yes, of course!</button>
-  <button @click="showModalToggleDelete">Cancel</button>
-</div>
+
+  
 </template>
 
 <script setup>
@@ -249,6 +272,8 @@ const deleteTask = async () => {
 const showModal = ref(false);
 const showModalToggleDelete = () => {
   showModal.value = !showModal.value;
+  
+
 };
 
 const toggleButton = () => {
