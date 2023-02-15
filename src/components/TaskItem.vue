@@ -24,9 +24,12 @@
         >
           {{ task.description }}
         </p>
+
+  
+
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
           <button
-            @click="deleteTask"
+            @click="showModalToggleDelete"
             type="button"
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-l-lg hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
           >
@@ -192,11 +195,31 @@
               <path d="M7 12l5 5l10 -10" />
               <path d="M2 12l5 5m5 -5l5 -5" />
             </svg>
+
           </button>
+          <div class="modal fixed  bg-verde " v-if="showModal">
+  
+  <h2>Are you sure you want to delete this task?</h2>
+  <button @click="deleteTask">Yes, of course!</button>
+  <button @click="showModalToggleDelete">Cancel</button>
+</div>
         </div>
+        
       </div>
+
+  
     </div>
-  </div>
+
+</div>
+
+  <!--POPUP DELETE-->
+
+  <div class="modal  bg-verde t-2/4 l-2/4" v-if="showModal">
+  
+  <h2>Are you sure you want to delete this task?</h2>
+  <button @click="deleteTask">Yes, of course!</button>
+  <button @click="showModalToggleDelete">Cancel</button>
+</div>
 </template>
 
 <script setup>
@@ -221,6 +244,11 @@ const props = defineProps({
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async () => {
   await taskStore.deleteTask(props.task.id);
+};
+//popup delete
+const showModal = ref(false);
+const showModalToggleDelete = () => {
+  showModal.value = !showModal.value;
 };
 
 const toggleButton = () => {

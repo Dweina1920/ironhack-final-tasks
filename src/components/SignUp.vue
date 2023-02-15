@@ -4,10 +4,8 @@
       <div
         class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
       >
-        <img class="w-40 h-40 mr-2" src="../img/logo-04.png" alt="logo" />
-
         <div
-          class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 "
+          class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
         >
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1
@@ -64,6 +62,7 @@
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 class="w-full text-azul-login bg-verde hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-verde dark:focus:ring-primary-800"
@@ -101,9 +100,11 @@ const route = "/auth/login";
 const buttonText = "Sign In";
 
 // Input Fields
-const email = ref("");
+
 const password = ref("");
+const email = ref("");
 const confirmPassword = ref("");
+
 
 // Error Message
 const errorMsg = ref("");
@@ -117,7 +118,6 @@ const signUp = async () => {
     try {
       // calls the user store and send the users info to backend to logIn
       await useUserStore().signUp(email.value, password.value);
-      // redirects user to the homeView
       redirect.push({ path: "/auth/login" });
     } catch (error) {
       // displays error message

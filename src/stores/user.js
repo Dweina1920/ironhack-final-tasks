@@ -36,20 +36,27 @@ export const useUserStore = defineStore("user", {
         const { data: profile } = await supabase.from("profiles").insert([
           {
             user_id: this.user.id,
-            username: email,
+            email: email,
           },
         ]);
       }
     },
 
-    async editProfileSupabase(username, avatar_url, fullname, website, email) {
-      let { data: profiles, error } = await supabase
+    async editProfileSupabase(
+      email,
+      website,
+      avatar_url,
+      username,
+      full_name
+    ) {
+      let { data, error } = await supabase
         .from("profiles")
         .update({
           username: username,
-          avatar_url: avatar_url,
-          fullname: fullname,
           website: website,
+          email: email,
+          avatar_url: avatar_url,
+          full_name: full_name,
           email: email,
         })
         .match({ user_id: this.user.id });
