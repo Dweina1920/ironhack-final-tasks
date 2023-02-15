@@ -1,20 +1,20 @@
 <template>
-  <div v-if="inputContainer === false" class="container one">
+  <div v-if="inputContainer === false" class="container one break-all ">
     <div
-      class="w-full h-60 bg-white border rounded-xl shadow-lg shadow-turquesa"
+      class="w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa "
     >
-      <div class="p-4 h-full flex flex-col justify-around items-center">
-        <a href="#">
+      <div class="p-4 h-full flex flex-col justify-around items-center  ">
+        
           <h5
             :class="
               props.task.is_complete
-                ? 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white  line-through'
-                : 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white'
+                ? 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white  line-through '
+                : 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white '
             "
           >
             {{ task.title }}
           </h5>
-        </a>
+      
         <p
           :class="
             props.task.is_complete
@@ -31,13 +31,13 @@
 
 
 <!-- popup opcion borrar -->
-<div  v-if="showModal" class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800">
-  <div class="bg-white rounded-lg w-1/2">
+<div  v-if="showModal" class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800 ">
+  <div class="bg-white rounded-lg w-1/2 ">
     <div class="flex flex-col items-start p-4">
      
       <hr>
-      <div class="flex row justify-between gap-10 items-center p-5">
-        <p class="text-gray-900 font-medium text-xl ml-16">Are you sure you want to delete the task?</p>
+      <div class="flex row justify-between gap-10 items-center p-5 break-words">
+        <p class="text-gray-900 font-medium text-xl ml-16 ">Are you sure you want to delete the task?</p>
        
       <hr>
       <div class="ml-auto">
@@ -136,22 +136,23 @@
       </div>
     </div>
   </div>
-  <div v-else class="container edit">
+  <div v-else class="container edit break-all">
     <div
-      class="w-full h-60 bg-white border rounded-xl shadow-lg shadow-turquesa"
+      class="w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa"
     >
       <div class="p-4 h-full flex flex-col justify-around items-center">
-        <a href="#">
+       
           <input
             type="text"
             v-model="currentTaskTitle"
             class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl w-full border p-2"
           />
-        </a>
-        <input
+        
+        <textarea
           type="text"
           v-model="currentTaskDescription"
           class="my-2 font-normal text-gray-700 text-center dark:text-gray-400 border rounded-xl w-full border p-2"
+          
         />
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
           <button

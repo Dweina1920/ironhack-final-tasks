@@ -10,15 +10,16 @@
         <input
           class="w-full border p-6 rounded-xl"
           type="text"
-          placeholder="Add a Task Title - Listen to Kendrick Lamar"
+          placeholder="Add a Task Title"
           v-model="name"
+          
         />
       </div>
       <div class="input-fiel">
-        <input
+        <textarea
           class="w-full border p-6 rounded-xl"
           type="text"
-          placeholder="Add a Task Description - Look up Kendrick Lamar's FEAR album on spotify and listen to the whole album."
+          placeholder="Add a Task Description"
           v-model="description"
         />
       </div>
