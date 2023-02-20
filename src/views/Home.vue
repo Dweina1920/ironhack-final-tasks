@@ -1,14 +1,14 @@
 <template>
   <div class="wrapper">
-    <Nav />
+    <NavDos />
 
     <div
       class="class-test"
     >
-      <p class="text-5xl font-extrabold text-turquesa p-12">
+      <p class="  text-5xl  font-extrabold text-turquesa  text-center p-12">
         Are you ready to do your tasks?
       </p>
-      <p class="text-4xl font-extrabold text-marronoscuro">
+      <p class=" text-4xl  font-extrabold text-marronoscuro text-center">
         Write them down here!
       </p>
     </div>
@@ -36,7 +36,7 @@
 import { ref, onUpdated } from "vue";
 import { useTaskStore } from "../stores/task";
 import { useRouter } from "vue-router";
-import Nav from "../components/Nav.vue";
+import NavDos from "../components/NavDos.vue";
 import NewTask from "../components/NewTask.vue";
 import TaskItem from "../components/TaskItem.vue";
 import Footer from "../components/Footer.vue";

@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center ">
     <div v-if="showErrorMessage">
       <p class="error-text">{{ errorMessage }}</p>
     </div>
     <div
-      class="w-96 p-6 border flex flex-col justify-around gap-8 m-12 rounded-xl"
+      class="w-96 p-6 border flex flex-col justify-around gap-8 m-12 rounded-xl "
     >
       <div class="input-field">
         <input

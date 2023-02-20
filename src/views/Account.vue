@@ -1,5 +1,5 @@
 <template>
-  <Nav />
+  <NavDos />
 
   <div class="mt-16 mx-16 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
@@ -92,7 +92,7 @@
 import { supabase } from "../supabase";
 import { onMounted, ref, toRefs } from "vue";
 import { useUserStore } from "../stores/user";
-import Nav from "../components/Nav.vue";
+import NavDos from "../components/NavDos.vue";
 import Footer from "../components/Footer.vue"
 
 const userStore = useUserStore();
