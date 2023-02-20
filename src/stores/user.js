@@ -41,14 +41,15 @@ export const useUserStore = defineStore("user", {
         ]);
       }
     },
+    async editAvatar(avatar_url) {
+      let { data, error } = await supabase.from("profile").update(
+      
+        {avatar_url : supabase.storage.from("avatars")})
+        .match({ user_id: this.user.id });
+    
+    },
 
-    async editProfileSupabase(
-      email,
-      website,
-      avatar_url,
-      username,
-      full_name
-    ) {
+    async editProfileSupabase(email, website, avatar_url, username, full_name) {
       let { data, error } = await supabase
         .from("profiles")
         .update({

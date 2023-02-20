@@ -3,11 +3,12 @@
   <div class="mt-16 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
       <div class="">
-        <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+        <div  class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class=" text-a flex flex-col justify-center items-center m-12">
-              <img class="profile-img"
-                src={{files}}
+              <img v-if="src" class="profile-img w-4/4 h-3/4"
+              :src= "src"
+                
                 alt="Profile picture"
               />
 
@@ -116,6 +117,7 @@ const redirect = useRouter();
 // Ejecutar la funcion getProfile al actualizar la página
 onMounted(() => {
   getProfile();
+  uploadAvatar();
 });
 
 // Función para traer los datos del perfil desde la store
@@ -173,18 +175,29 @@ const uploadAvatar = async (evt) => {
     const filePath = `${Math.random()}.${fileExt}`
 
     let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
-    //avatar_url.value = "https://zkxclgazccxtzdbcydyq.supabase.co/storage/v1/object/public/avatars/" + filePath;
+    avatar_url.value = filePath;
 
 
     if (uploadError) throw uploadError
     emit('update:path', filePath)
     emit('upload')
+     await downloadImage(filePath)
   } catch (error) {
     alert(error.message)
   } finally {
     uploading.value = false
   }
 };
+
+const downloadImage = async (imageUrl) => {
+  try {
+    const { data, error } = await supabase.storage.from('avatars').download(imageUrl)
+    if (error) throw error
+    src.value = URL.createObjectURL(data)
+  } catch (error) {
+    console.error('Error downloading image: ', error.message)
+  }
+}
 </script>
 
 <style scoped></style>

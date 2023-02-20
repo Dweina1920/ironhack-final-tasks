@@ -10,10 +10,11 @@
               <img
                 :src="
                   avatar_url
-                    ? avatar_url
+                    ? src
                     : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
                 "
                 alt="Profile picture"
+                class="w-4/4 h-3/4 m-auto"
               />
             </div>
 
@@ -22,7 +23,7 @@
               <div
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
-                <div
+                <div v-if="username"
                   class="md:col-span-5 flex row items-center justify-between"
                 >
                   <p class="font-bold text-lg">Username:</p>
@@ -49,22 +50,22 @@
                   </p>
                 </div>
 
-                <div
+                <div v-if="fullname"
                   class="md:col-span-5 flex row items-center justify-between"
                 >
                   <p class="font-bold text-lg">Full name:</p>
-                  
-                  <p  class="border p-2 rounded-xl bg-white w-3/4">
+
+                  <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ fullname }}
                   </p>
                 </div>
 
-                <div
+                <div v-if="website"
                   class="md:col-span-5 flex row items-center justify-between"
                 >
                   <p class="font-bold text-lg">Website:</p>
-                 
-                  <p  class="border p-2 rounded-xl bg-white w-3/4">
+
+                  <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ website }}
                   </p>
                 </div>
@@ -84,6 +85,7 @@
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -91,6 +93,7 @@ import { supabase } from "../supabase";
 import { onMounted, ref, toRefs } from "vue";
 import { useUserStore } from "../stores/user";
 import Nav from "../components/Nav.vue";
+import Footer from "../components/Footer.vue"
 
 const userStore = useUserStore();
 
@@ -115,6 +118,7 @@ async function getProfile() {
   created_at.value = userStore.profile.created_at;
   fullname.value = userStore.profile.full_name;
   website.value = userStore.profile.website;
+  downloadImage(avatar_url.value)
 }
 
 async function signOut() {
@@ -126,6 +130,17 @@ async function signOut() {
     alert(error.message);
   } finally {
     loading.value = false;
+  }
+}
+ const src = ref()
+
+const downloadImage = async (imageUrl) => {
+  try {
+    const { data, error } = await supabase.storage.from('avatars').download(imageUrl)
+    if (error) throw error
+    src.value = URL.createObjectURL(data)
+  } catch (error) {
+    console.error('Error downloading image: ', error.message)
   }
 }
 </script>
