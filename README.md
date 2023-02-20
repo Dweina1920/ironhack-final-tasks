@@ -44,5 +44,18 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 ### 10 de Febrero:
 [x] Maquetación Login y Sing Up.
 [x] Lógica de Profile.
+[x] Maquetación Profile.
+
+
+### 20 de Febrero:
+[ ] Hamburguer del Header.
+[ ] Web responsive.
+[ ] Imagen del Profile.
+[ ] Datos vacíos de Profile.
+
+### 21 de Febrero:
+[ ] Current time.
+[ ] Readme.
+[ ] Presentación.
 
 
