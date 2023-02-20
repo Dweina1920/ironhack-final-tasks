@@ -7,11 +7,7 @@
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class=" text-a flex flex-col justify-center items-center m-12">
               <img class="profile-img"
-                :src="
-                  avatar_url
-                    ? avatar_url
-                    : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
-                "
+                src={{files}}
                 alt="Profile picture"
               />
 
@@ -176,8 +172,8 @@ const uploadAvatar = async (evt) => {
     const fileExt = file.name.split('.').pop()
     const filePath = `${Math.random()}.${fileExt}`
 
-    let { error: uploadError } = await supabase.storage.from('/public/avatars').upload(filePath, file, { upsert: false});
-    avatar_url.value = "https://zkxclgazccxtzdbcydyq.supabase.co/storage/v1/object/public/avatars/" + filePath;
+    let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
+    //avatar_url.value = "https://zkxclgazccxtzdbcydyq.supabase.co/storage/v1/object/public/avatars/" + filePath;
 
 
     if (uploadError) throw uploadError

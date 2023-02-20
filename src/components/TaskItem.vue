@@ -1,7 +1,7 @@
 <template>
   <div v-if="inputContainer === false" class="container one break-all ">
     <div
-      class="w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa "
+      class="h-auto w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa "
     >
       <div class="p-4 h-full flex flex-col justify-around items-center  ">
         
