@@ -48,12 +48,18 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 
 
 ### 20 de Febrero:
-[ ] Hamburguer del Header.
-[ ] Web responsive.
-[ ] Imagen del Profile.
-[ ] Datos vacíos de Profile.
+[x] Hamburguer del Header.
+[x] Home responsive.
+[x] Imagen del Profile.
+[x] Datos vacíos de Profile.
 
-### 21 de Febrero:
+### 22 de Febrero:
+[ ] Maquetar responsive Profile y Edit Profile.
+[ ] Loader.
+[ ] Día actual en Home + correo.
+
+
+### 22 de Febrero:
 [ ] Current time.
 [ ] Readme.
 [ ] Presentación.
