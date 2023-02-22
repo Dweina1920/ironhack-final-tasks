@@ -1,6 +1,6 @@
 <template>
-  <Nav />
-  <div class="mt-16 flex items-center justify-center">
+  <NavDos />
+  <div class="mt-16 flex items-center justify-center mx-4">
     <div class="container max-w-screen-lg mx-auto">
       <div class="">
         <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
@@ -8,7 +8,7 @@
             <div class="text-a flex flex-col justify-center items-center ">
               <img
                 v-if="src"
-                class="profile-img w-3/4 h-3/4"
+                class="profile-img m-auto h-40 w-40 md:h-60 md:w-60"
                 :src="src"
                 alt="Profile picture"
               />
@@ -17,7 +17,7 @@
 
               <input
                 @change="uploadAvatar"
-                class=" block w-full mb-5 text-xs text-gray-900 border border-gray-300  cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                class=" block w-full my-8 text-xs text-gray-900 border border-gray-300  cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                 id="small_size"
                 type="file"
               />
@@ -26,12 +26,12 @@
             </div>
 
             <div class="lg:col-span-2">
-              <p class="font-medium text-lg text-center">Personal Details</p>
+              
               <div
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
-                <div class="md:col-span-5">
-                  <label for="full_name">Full Name</label>
+                <div class="md:col-span-5 my-4 lg:my-0">
+                  <label for="full_name" class="text-xl  lg:text-lg ">Full Name</label>
                   <input
                     type="text"
                     name="full_name"
@@ -41,19 +41,19 @@
                   />
                 </div>
 
-                <div class="md:col-span-5">
-                  <label for="full_name">Username</label>
+                <div class=" md:col-span-5 my-4 lg:my-0">
+                  <label for="full_name" class="text-xl lg:text-lg">Username</label>
                   <input
                     type="text"
                     name="username"
                     id="username"
-                    class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                    class=" h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                     v-model="username"
                   />
                 </div>
 
-                <div class="md:col-span-5">
-                  <label for="email">Email </label>
+                <div class="md:col-span-5 my-4 lg:my-0">
+                  <label for="email" class="text-xl lg:text-lg">Email </label>
                   <input
                     type="email"
                     name="email"
@@ -64,8 +64,8 @@
                   />
                 </div>
 
-                <div class="md:col-span-5">
-                  <label for="website">Website </label>
+                <div class="md:col-span-5 my-4 lg:my-0">
+                  <label for="website" class="text-xl lg:text-lg">Website </label>
                   <input
                     type="text"
                     name="website"
@@ -76,7 +76,7 @@
                   />
                 </div>
 
-                <div class="md:col-span-5 text-right">
+                <div class="md:col-span-5 text-center lg:text-right">
                   <div class="inline-flex items-end">
                     <button
                       @click.prevent="editProfileSupabase"
@@ -98,7 +98,7 @@
 </template>
 
 <script setup>
-import Nav from "../components/Nav.vue";
+import NavDos from "../components/NavDos.vue";
 import Footer from "../components/Footer.vue";
 import { supabase } from "../supabase";
 import { onMounted, ref, toRefs } from "vue";

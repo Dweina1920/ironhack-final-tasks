@@ -4,7 +4,7 @@
       <p class="error-text">{{ errorMessage }}</p>
     </div>
     <div
-      class="w-96 p-6 border flex flex-col justify-around gap-8 m-12 rounded-xl "
+      class="w-80 lg:w-96 p-6 border flex flex-col justify-around gap-8 m-12 rounded-xl "
     >
       <div class="input-field">
         <input

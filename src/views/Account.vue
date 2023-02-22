@@ -1,59 +1,55 @@
 <template>
   <NavDos />
 
-  <div class="mt-16 mx-16 flex items-center justify-center">
+  <div class="mt-16 mx-8 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
       <div class="">
         <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="text-gray-600">
               <img
-                :src="
-                  avatar_url
-                    ? src
-                    : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'
-                "
-                alt="Profile picture"
-                class="w-4/4 h-3/4 m-auto"
+                :src="src"
+               
+                class="m-auto h-40 w-40 md:h-60 md:w-60"
               />
             </div>
 
             <div class="lg:col-span-2">
-              <p class="font-bold text-xl">Personal Details</p>
+              <p class="font-bold text-xl text-center md:text-center lg:text-left xl:text-left">Personal Details</p>
               <div
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
                 <div v-if="username"
-                  class="md:col-span-5 flex row items-center justify-between"
+                  class="md:col-span-5  flex flex-col text-center lg:flex-row items-center justify-between"
                 >
-                  <p class="font-bold text-lg">Username:</p>
+                  <p class="font-bold text-lg my-2">Username:</p>
                   <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ username }}
                   </p>
                 </div>
 
                 <div
-                  class="md:col-span-5 flex row items-center justify-between"
+                  class="md:col-span-5 flex flex-col text-center lg:flex-row items-center justify-between "
                 >
-                  <p class="font-bold text-lg">Email:</p>
-                  <p class="border p-2 rounded-xl bg-white w-3/4">
+                  <p class="font-bold text-lg my-2">Email:</p>
+                  <p class="border p-2 rounded-xl bg-white  w-3/4">
                     {{ email }}
                   </p>
                 </div>
 
                 <div
-                  class="md:col-span-5 flex row items-center justify-between"
+                  class="md:col-span-5 flex flex-col text-center lg:flex-row items-center justify-between"
                 >
-                  <p class="font-bold text-lg">Creation date:</p>
+                  <p class="font-bold text-lg my-2">Creation date:</p>
                   <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ created_at ? created_at.split("T")[0] : created_at }}
                   </p>
                 </div>
 
                 <div v-if="fullname"
-                  class="md:col-span-5 flex row items-center justify-between"
+                  class="md:col-span-5 flex flex-col text-center lg:flex-row items-center justify-between"
                 >
-                  <p class="font-bold text-lg">Full name:</p>
+                  <p class="font-bold text-lg my-2">Full name:</p>
 
                   <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ fullname }}
@@ -61,18 +57,18 @@
                 </div>
 
                 <div v-if="website"
-                  class="md:col-span-5 flex row items-center justify-between"
+                  class="md:col-span-5 flex flex-col text-center lg:flex-row items-center justify-between"
                 >
-                  <p class="font-bold text-lg">Website:</p>
+                  <p class="font-bold text-lg ">Website:</p>
 
                   <p class="border p-2 rounded-xl bg-white w-3/4">
                     {{ website }}
                   </p>
                 </div>
-                <div class="md:col-span-5 text-right">
-                  <div class="inline-flex items-end">
+                <div class="md:col-span-5 text-center lg:text-right">
+                  <div class="inline-flex">
                     <button
-                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
                     >
                       <router-link to="/editaccount">Edit</router-link>
                     </button>

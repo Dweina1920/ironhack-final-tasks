@@ -5,9 +5,10 @@
     <div
       class="class-test"
     >
-      <p class="  text-3xl  font-extrabold text-turquesa  text-center p-4">
+      <p class="dina-tailwind-test">
         Are you ready to do your tasks?
       </p>
+      
       <p class=" text-2xl  font-extrabold text-marronoscuro text-center">
         Write them down here!
       </p>
@@ -85,6 +86,10 @@ const completeTaskSupabase = async (taskObject) => {
 <style>
  .class-test{
   @apply  flex flex-col justify-center items-center mt-8 leading-10
+ }
+
+ .dina-tailwind-test{
+  @apply text-3xl   font-extrabold text-turquesa  text-center p-4
  }
 
 </style>
