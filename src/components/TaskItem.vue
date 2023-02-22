@@ -1,23 +1,25 @@
 <template>
-  <div v-if="inputContainer === false" class="container one break-all ">
+  <div
+    v-if="inputContainer === false"
+    class="container one break-all scale-up-center"
+  >
     <div
-      class="h-auto w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa "
+      class="h-auto w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa"
     >
-      <div class="p-4 h-full flex flex-col justify-around items-center  ">
-        
-          <h5
-            :class="
-              props.task.is_complete
-                ? 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white  line-through '
-                : 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white '
-            "
-          >
-            {{ task.title }}
-          </h5>
-      
+      <div class="p-4 h-full flex flex-col justify-around items-center">
+        <h5
+          :class="
+            isComplete
+              ? 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white  line-through '
+              : 'my-2 text-2xl-center font-bold tracking-tight text-gray-900 dark:text-white '
+          "
+        >
+          {{ task.title }}
+        </h5>
+
         <p
           :class="
-            props.task.is_complete
+            isComplete
               ? 'my-2 font-normal text-gray-700 text-center dark:text-gray-400  line-through'
               : 'my-2 font-normal text-gray-700 text-center dark:text-gray-400'
           "
@@ -26,36 +28,45 @@
         </p>
 
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
+          <!-- popup opcion borrar -->
+          <div
+            v-if="showModal"
+            class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800"
+          >
+            <div class="bg-white rounded-lg w-1/2">
+              <div class="flex flex-col items-start p-4">
+                <hr />
+                <div
+                  class="flex row justify-between gap-10 items-center p-5 break-words"
+                >
+                  <p class="text-gray-900 font-medium text-lg ml-16">
+                    Are you sure you want to delete the task?
+                  </p>
 
+                  <hr />
+                  <div class="ml-auto">
+                    <button
+                      @click="deleteTask"
+                      class="bg-turquesa hover:bg-turquesa text-white font-bold py-2 px-4 rounded"
+                    >
+                      Agree
+                    </button>
+                    <button
+                      @click="showModalToggleDelete"
+                      class="bg-transparent hover:bg-gray-500 text-turquesa font-semibold hover:text-white py-2 px-4 border border-turquesa hover:border-transparent rounded"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <!--si no hago el v-if no desparece el boton de borrar -->
 
-
-<!-- popup opcion borrar -->
-<div  v-if="showModal" class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800 ">
-  <div class="bg-white rounded-lg w-1/2 ">
-    <div class="flex flex-col items-start p-4">
-     
-      <hr>
-      <div class="flex row justify-between gap-10 items-center p-5 break-words">
-        <p class="text-gray-900 font-medium text-xl ml-16 ">Are you sure you want to delete the task?</p>
-       
-      <hr>
-      <div class="ml-auto">
-        <button  @click="deleteTask" class="bg-turquesa hover:bg-turquesa text-white font-bold py-2 px-4 rounded">
-          Agree
-        </button>
-        <button @click="showModalToggleDelete" class="bg-transparent hover:bg-gray-500 text-turquesa font-semibold hover:text-white py-2 px-4 border border-turquesa hover:border-transparent rounded">
-          Close
-        </button>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--si no hago el v-if no desparece el boton de borrar -->
-
-          <button v-else
+          <button
+            v-else
             @click="showModalToggleDelete"
             type="button"
             class="deletebutton inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-l-lg hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
@@ -82,10 +93,8 @@
           </button>
           <!--opcion borrar -->
 
-
-
-          
           <button
+            v-if="!isComplete"
             @click="showInput"
             type="button"
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-marron-900 hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-verde-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
@@ -113,7 +122,7 @@
           <button
             @click="completeTask"
             type="button"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-marron-900 rounded-r-md hover:bg-verde hover:text-white focus:z-10 focus:ring-2 focus:ring-verde-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border  rounded-r-md hover:bg-verde hover:text-white    "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -141,18 +150,16 @@
       class="w-full h-80 bg-white border rounded-xl shadow-lg shadow-turquesa"
     >
       <div class="p-4 h-full flex flex-col justify-around items-center">
-       
-          <input
-            type="text"
-            v-model="currentTaskTitle"
-            class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl w-full border p-2"
-          />
-        
+        <input
+          type="text"
+          v-model="currentTaskTitle"
+          class="my-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white border rounded-xl w-full border p-2"
+        />
+
         <textarea
           type="text"
           v-model="currentTaskDescription"
           class="my-2 font-normal text-gray-700 text-center dark:text-gray-400 border rounded-xl w-full border p-2"
-          
         />
         <div class="my-2 inline-flex rounded-md shadow-sm" role="group">
           <button
@@ -240,10 +247,6 @@
   </div>
 
   <!--POPUP DELETE-->
-
-  
-
-  
 </template>
 
 <script setup>
@@ -255,7 +258,10 @@ import { supabase } from "../supabase";
 const emit = defineEmits(["childComplete", "editChild"]);
 //funcion para completar tarea que se encarga de ennviar la info al padre
 
+const isComplete = ref(props.task.is_complete);
+
 const completeTask = () => {
+  isComplete.value = !isComplete.value;
   emit("childComplete", props.task);
 };
 
@@ -273,8 +279,6 @@ const deleteTask = async () => {
 const showModal = ref(false);
 const showModalToggleDelete = () => {
   showModal.value = !showModal.value;
-  
-
 };
 
 const toggleButton = () => {
@@ -318,6 +322,8 @@ const editTask = () => {
   color: black;
   text-decoration: line-through;
 }
+
+
 </style>
 
 <!--

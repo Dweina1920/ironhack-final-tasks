@@ -5,10 +5,10 @@
     <div
       class="class-test"
     >
-      <p class="  text-5xl  font-extrabold text-turquesa  text-center p-12">
+      <p class="  text-3xl  font-extrabold text-turquesa  text-center p-4">
         Are you ready to do your tasks?
       </p>
-      <p class=" text-4xl  font-extrabold text-marronoscuro text-center">
+      <p class=" text-2xl  font-extrabold text-marronoscuro text-center">
         Write them down here!
       </p>
     </div>
@@ -22,7 +22,7 @@
           v-for="task in tasks"
           :key="task.id"
           :task="task"
-          @child-complete="completeTaskSupabase"
+          @childComplete="completeTaskSupabase"
           @editCild="getTasks"
         />
       </div>
@@ -40,6 +40,7 @@ import NavDos from "../components/NavDos.vue";
 import NewTask from "../components/NewTask.vue";
 import TaskItem from "../components/TaskItem.vue";
 import Footer from "../components/Footer.vue";
+import { defineStore } from "pinia";
 
 const taskStore = useTaskStore();
 
@@ -56,16 +57,28 @@ getTasks();
 onUpdated(() => {
   getTasks();
 });
+//definir emits para pasar lógica y eventos hacia componentes padres
+
+//const emit = defineEmits(["booleanChild"]);
+//funcion para completar tarea que se encarga de ennviar la info al padre
+
+//const completeTask = () => {
+  //emit("booleanChild", props.changeTasckBooleanValue);
+ 
+//};
+
+
+
+//const props = defineProps({
+ // changeTasckBooleanValue: boolean,
+//});
 
 //funcion para completar tarea conectandose a supabase
 const completeTaskSupabase = async (taskObject) => {
   //initial log to verify that is connected
   console.log("click from home");
-  let changeTasckBooleanValue = !taskObject.is_complete;
   let taskId = taskObject.id;
-
-  console.log(changeTasckBooleanValue, taskId);
-  await taskStore.completeTask(changeTasckBooleanValue, taskId);
+  await taskStore.completeTask(taskObject.is_complete, taskId);
 };
 </script>
 

@@ -3,24 +3,26 @@
   <div class="mt-16 flex items-center justify-center">
     <div class="container max-w-screen-lg mx-auto">
       <div class="">
-        <div  class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+        <div class="bg-verde rounded shadow-lg p-4 px-4 md:p-8 mb-6">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-            <div class=" text-a flex flex-col justify-center items-center m-12">
-              <img v-if="src" class="profile-img w-4/4 h-3/4"
-              :src= "src"
-                
+            <div class="text-a flex flex-col justify-center items-center ">
+              <img
+                v-if="src"
+                class="profile-img w-3/4 h-3/4"
+                :src="src"
                 alt="Profile picture"
               />
 
               <!--falta la logica del cambio de imagen-->
+
               <input
-                type="file"
-                name="avatar_url"
                 @change="uploadAvatar"
-                class="mt-4 bg-verde rounded-xl"
-                accept=".jpg, .jpeg, .png, .gif"
+                class=" block w-full mb-5 text-xs text-gray-900 border border-gray-300  cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="small_size"
+                type="file"
               />
-       
+              
+
             </div>
 
             <div class="lg:col-span-2">
@@ -130,74 +132,77 @@ async function getProfile() {
   website.value = userStore.profile.website;
 }
 
-
 // funcion para editar perfil
 async function editProfileSupabase() {
   if (
-    website.value.length === 0  ||
+    website.value.length === 0 ||
     email.value.length === 0 ||
     username.value.length === 0
   ) {
     alert("The information can not be empty");
-  } else { 
-   
+  } else {
     await userStore.fetchUser();
-    await userStore.editProfileSupabase(email.value, website.value, avatar_url.value, username.value, full_name.value);
+    await userStore.editProfileSupabase(
+      email.value,
+      website.value,
+      avatar_url.value,
+      username.value,
+      full_name.value
+    );
     redirect.push({ path: "/account" });
   }
-
 }
-
-
 
 //funcion para actulizar imagen de perfil
 // -------------------------------------------
 // variables
-const prop = defineProps(['path', 'size'])
-const { path, size } = toRefs(prop)
+const prop = defineProps(["path", "size"]);
+const { path, size } = toRefs(prop);
 
-const emit = defineEmits(['upload', 'update:path'])
-const uploading = ref(false)
-const src = ref('')
-const files = ref()
-
+const emit = defineEmits(["upload", "update:path"]);
+const uploading = ref(false);
+const src = ref("");
+const files = ref();
 
 const uploadAvatar = async (evt) => {
-  files.value = evt.target.files
+  files.value = evt.target.files;
   try {
-    uploading.value = true
+    uploading.value = true;
     if (!files.value || files.value.length === 0) {
-      throw new Error('You must select an image to upload.')
+      throw new Error("You must select an image to upload.");
     }
 
-    const file = files.value[0]
-    const fileExt = file.name.split('.').pop()
-    const filePath = `${Math.random()}.${fileExt}`
+    const file = files.value[0];
+    const fileExt = file.name.split(".").pop();
+    const filePath = `${Math.random()}.${fileExt}`;
 
-    let { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file);
+    let { error: uploadError } = await supabase.storage
+      .from("avatars")
+      .upload(filePath, file);
     avatar_url.value = filePath;
 
-
-    if (uploadError) throw uploadError
-    emit('update:path', filePath)
-    emit('upload')
-     await downloadImage(filePath)
+    if (uploadError) throw uploadError;
+    emit("update:path", filePath);
+    emit("upload");
+    await downloadImage(filePath);
   } catch (error) {
-    alert(error.message)
+    alert(error.message);
   } finally {
-    uploading.value = false
+    uploading.value = false;
   }
 };
 
 const downloadImage = async (imageUrl) => {
   try {
-    const { data, error } = await supabase.storage.from('avatars').download(imageUrl)
-    if (error) throw error
-    src.value = URL.createObjectURL(data)
+    const { data, error } = await supabase.storage
+      .from("avatars")
+      .download(imageUrl);
+    if (error) throw error;
+    src.value = URL.createObjectURL(data);
   } catch (error) {
-    console.error('Error downloading image: ', error.message)
+    console.error("Error downloading image: ", error.message);
   }
-}
+};
 </script>
 
 <style scoped></style>

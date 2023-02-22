@@ -42,26 +42,30 @@ __El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.j
 
 
 ### 10 de Febrero:
-[x] Maquetación Login y Sing Up.
-[x] Lógica de Profile.
-[x] Maquetación Profile.
+* [x] Maquetación Login y Sing Up.
+* [x] Lógica de Profile.
+* [x] Maquetación Profile.
 
 
 ### 20 de Febrero:
-[x] Hamburguer del Header.
-[x] Home responsive.
-[x] Imagen del Profile.
-[x] Datos vacíos de Profile.
+* [x] Hamburguer del Header.
+* [x] Home responsive.
+* [x] Imagen del Profile.
+* [x] Datos vacíos de Profile.
+
+### 21 de Febrero:
+* [] Maquetar responsive Profile y Edit Profile.
+* [] Loader.
+* [] Día actual en Home + correo.
+* [x] Si le das al botón completado, se deshabilitan el resto. 
+* [x] Arreglar error de bg en Login y SignUp.
+
+
+
 
 ### 22 de Febrero:
-[ ] Maquetar responsive Profile y Edit Profile.
-[ ] Loader.
-[ ] Día actual en Home + correo.
-
-
-### 22 de Febrero:
-[ ] Current time.
-[ ] Readme.
-[ ] Presentación.
+* [] Current time.
+* [] Readme.
+* [] Presentación.
 
 

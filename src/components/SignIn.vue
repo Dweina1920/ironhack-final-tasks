@@ -1,10 +1,10 @@
 <!-- COMPONENTE BOILERPLATE -->
 
-<template>
-  <div class="bg-[url(../img/bg-08.jpg)] bg-no-repeat bg-center w-full">
+<template >
+  <div class="bg-[url(../img/bg-08.jpg)] bg-no-repeat bg-center w-full  ">
     <section class="dark:bg-gray-900 w-full">
       <div
-        class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+        class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen  py-0 "
       >
         <img class="w-40 h-40 mr-2" src="../img/logo-04.png" alt="logo" />
 
