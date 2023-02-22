@@ -1,6 +1,11 @@
 <template>
+
   <div class="wrapper">
     <NavDos />
+    <div class="mt-10 mx-44 flex flex-row justify-between">
+      <p class=" flex row justify-between gap-2 font-b">Account of:   <p class="font-bold"> {{email}} </p></p>
+      <p class=" ">{{ moment().format('DD-MM-YYYY') }}</p>
+    </div>
 
     <div
       class="class-test"
@@ -36,14 +41,19 @@
 <script setup>
 import { ref, onUpdated } from "vue";
 import { useTaskStore } from "../stores/task";
+import { useUserStore } from "../stores/user";
 import { useRouter } from "vue-router";
+import { onMounted } from "vue";
 import NavDos from "../components/NavDos.vue";
 import NewTask from "../components/NewTask.vue";
 import TaskItem from "../components/TaskItem.vue";
 import Footer from "../components/Footer.vue";
 import { defineStore } from "pinia";
+import moment from 'moment';
+
 
 const taskStore = useTaskStore();
+const userStore = useUserStore();
 
 // Variable para guardar las tareas de supabase
 const tasks = ref([]);
@@ -81,6 +91,21 @@ const completeTaskSupabase = async (taskObject) => {
   let taskId = taskObject.id;
   await taskStore.completeTask(taskObject.is_complete, taskId);
 };
+
+//traer el email de userstore 
+onMounted(() => {
+  getProfile();
+});
+
+const email = ref(null);
+
+async function getProfile() {
+  await userStore.fetchUser();
+
+  email.value = userStore.profile.email;
+ 
+
+}
 </script>
 
 <style>

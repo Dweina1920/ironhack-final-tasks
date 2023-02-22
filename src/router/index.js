@@ -5,6 +5,7 @@ import Account from "../views/Account.vue"
 import SignIn from "../components/SignIn.vue";
 import SignUp from "../components/SignUp.vue";
 import EditAccount from "../views/EditAccount.vue";
+import Task from "../views/Task.vue";
 
 const routes = [
   {
@@ -17,7 +18,8 @@ const routes = [
   },
   { path: "/", component: Home },
   { path: "/account", component: Account },
-  { path: "/editaccount", component: EditAccount }
+  { path: "/editaccount", component: EditAccount },
+  { path: "/task", component: Task }
 ];
 
 const router = createRouter({
