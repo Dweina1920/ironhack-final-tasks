@@ -2,10 +2,10 @@
 
 <!-- LOGOTIPO DEL PROYECTO -->
 <br />
-<div alinear="centro">
+<div align="center">
   <img src="./src/img/logo-04.png" alt="Logotipo" width="200" height="180">
   <h2 align="center">Página web de tareas</h2>
-  <a href="https://ironhack-final-tasks-5ead.vercel.app/auth/login">Visita el sitio web</a>
+  <a  href="https://ironhack-final-tasks-5ead.vercel.app/auth/login">Visita el sitio web</a>
 </div>
 
 <!-- TABLA DE CONTENIDOS -->
@@ -19,7 +19,7 @@
       </ul>
     </li>
     <li>
-    <a href="#hoja de ruta">Hoja de ruta</a>
+    <a href="#hoja de ruta">Planificación</a>
      <ul>
      <li><a href="#backlog">Registro anterior</a></li>
         <li><a href="#day-one">martes 7 de febrero de 2023</a></li>
@@ -47,14 +47,14 @@
 
 <img src="./src/img/home.png" alt="Logotipo" width="100%" height="50%">
 
-El proyecto Task ToDo es el proyecto final que he realizado en el bootcamp de desarrollo web FrontEnd de Ironhack. El proyecto demuestra lo aprendido en el curso, los conocimientos de Vue.js obtenidos y ademas poder conectarlo a una base de datos externa y gestionarla.
+El proyecto Task ToDo es el proyecto final que he realizado en el bootcamp de desarrollo web FrontEnd de Ironhack. Demuestra lo aprendido en el curso: los conocimientos de Vue.js obtenidos y además poder conectarlo a una base de datos externa y gestionarla.
 
-Es una aplicacion que permite a usuarios crear una cuenta, añadir tareas a completar y con ellas realizar un CRUD. Nuestra pagina web esta vinculada a una base de datos, donde estaremos almacenando todos los datos de usuarios y las tareas. En este caso, para gestionarlo utilizaremos Supabase, que nos ofrece un subconjunto de funcionalidades de Back End que nos permite gestionarlo como un servicio.
+Es una aplicación que permite a usuarios crear una cuenta, añadir tareas a completar y con ellas realizar un CRUD. Nuestra página web está vinculada a una base de datos, donde estaremos almacenando todos los datos de usuarios y las tareas. En este caso, para gestionarlo utilizaremos Supabase, que nos ofrece un subconjunto de funcionalidades de Back-End.
 
 Primero he creado el proyecto y lo he ido dividiendo por componentes. Las vistas que tiene el proyecto son:
-- Inicio: Contiene el componente Nav por el que se puede naver por toda la Web. También contiene El componente NewTask (donde se crea la nueva tarea) y también el componente TaskItem que es la tarea creada (desde este mismo componente se puede editar, marcar como tarea completada y elimitar tarea). Finalmente podemos encontrar un Footer que como el Nav estarán en el resto de vistas. 
+- Inicio: Contiene el componente Nav por el que se puede navegar por toda la web. También contiene El componente NewTask (donde se crea la nueva tarea), y el componente TaskItem que es la tarea creada (desde este mismo componente se puede editar, marcar como tarea completada y elimitar tarea). Finalmente podemos encontrar un Footer, que como el Nav estarán en el resto de vistas. 
 
-- Account: Contiene como componente principal el Profile, donde podemos ver los datos del usuario, clicando al botón de Editar nos deriva gracias al Router a la vista  EditAccount. He añadido a esta vista un loader tipo Skeleton.
+- Account: El componente principal es Profile, donde podemos ver los datos del usuario, clicando al botón de Editar nos deriva gracias al Router a la vista  EditAccount. He añadido a esta vista un loader tipo Skeleton.
 
 - EditAccount: Esta vista permite modificar los datos del usuario. 
 
@@ -77,7 +77,7 @@ Primero he creado el proyecto y lo he ido dividiendo por componentes. Las vistas
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
-##  Hoja de ruta
+##  Planificación
 
 ####  Día uno
 
@@ -147,6 +147,7 @@ Primero he creado el proyecto y lo he ido dividiendo por componentes. Las vistas
 
 ######  miércoles 24 de febrero de 2023
 
+- [x] Push final.
 - [x] Presentación proyecto final.
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
@@ -198,20 +199,4 @@ Mi gran error ha sido no arriesgar mucho con el estilo, y por ello ha quedado al
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
-# [](https://github.com/zantonz/final-project/blob/master/README.md)ToDo App
-
-[Click para acceder a la web](https://todo-zantonz.vercel.app/)
-
-Autor: Anton Zyrianov
-Fecha: 25/08/2022
-
-## Descripcion
-
-![Pagina Home](https://i.postimg.cc/m2rV83dV/Captura-de-pantalla-2022-08-25-a-las-10-38-46.png)
-
-Se trata del proyecto final realizado durante el bootcamp de Front End Development en el Ironhack que consiste en una pagina web que te permite gestionar tus tareas.
-
-Es una aplicacion creada con Vue.js que permite a usuarios crear una cuenta, añadir tareas a completar, editarlas, marcarlas como completadas y finalmente borrarlas. Nuestra pagina web esta vinculada a una base de datos, donde estaremos almacenando todos los datos de usuarios y las tareas. En este caso, para gestionarlo utilizaremos Supabase, que nos ofrece un subconjunto de funcionalidades de Back End que nos permite gestionarlo como un servicio.
-
-__El objetivo__ de este proyecto es poner en practica los conocimientos de Vue.js obtenidos durante el curos y ademas poder conectarlo a una base de datos externa y gestionarla.
 
