@@ -69,7 +69,7 @@
                 <a
                   href="#"
                   class="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  ><router-link to="/task">Task Manager</router-link></a
+                  ><router-link to="/task">Tools</router-link></a
                 >
 
                 <a
@@ -109,7 +109,7 @@
           <a
             href="#"
             class="text-black hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            ><router-link to="/task">Task Manager</router-link></a
+            ><router-link to="/task">Tools</router-link></a
           >
 
           <a

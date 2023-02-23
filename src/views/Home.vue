@@ -5,6 +5,7 @@
     <div class="mt-10 lg:mx-44 flex  flex-col lg:flex-row lg:justify-between justify-center items-center gap-2">
       <p class=" flex flex-col lg:flex-row lg:justify-between gap-2 items-center ">Account of:   <p class="font-bold"> {{email}} </p></p>
       <p class=" ">{{ moment().format('DD-MM-YYYY') }}</p>
+      
     </div>
 
     <div
@@ -51,6 +52,12 @@ import Footer from "../components/Footer.vue";
 import { defineStore } from "pinia";
 import moment from 'moment';
 
+//hora actual
+ 
+
+
+
+//console.log(horaActual.split())
 
 const taskStore = useTaskStore();
 const userStore = useUserStore();

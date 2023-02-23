@@ -33,21 +33,21 @@
             v-if="showModal"
             class="flex items-center justify-center fixed left-0 bottom-0 w-full h-full bg-gray-800"
           >
-            <div class="bg-white rounded-lg w-1/2">
-              <div class="flex flex-col items-start p-4">
+            <div class="bg-white rounded-lg w-2/2 lg:w-2/4">
+              <div class="flex flex-col items-center p-4">
                 <hr />
                 <div
-                  class="flex row justify-between gap-10 items-center p-5 break-words"
+                  class="flex flex-col  justify-between gap-4  items-center p-5 break-words"
                 >
-                  <p class="text-gray-900 font-medium text-lg ml-16">
+                  <p class="text-gray-900 font-medium text-sm lg:text-lg md:text-sm lg:ml-16">
                     Are you sure you want to delete the task?
                   </p>
 
                   <hr />
-                  <div class="ml-auto">
+                  <div class="ml-auto flex ">
                     <button
                       @click="deleteTask"
-                      class="bg-turquesa hover:bg-turquesa text-white font-bold py-2 px-4 rounded"
+                      class="bg-turquesa hover:bg-turquesa text-white font-bold py-2 px-4 rounded text-sm lg:text-lg md:text-sm"
                     >
                       Agree
                     </button>
