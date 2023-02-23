@@ -2,8 +2,8 @@
 
   <div class="wrapper">
     <NavDos />
-    <div class="mt-10 mx-44 flex flex-row justify-between">
-      <p class=" flex row justify-between gap-2 font-b">Account of:   <p class="font-bold"> {{email}} </p></p>
+    <div class="mt-10 lg:mx-44 flex  flex-col lg:flex-row lg:justify-between justify-center items-center gap-2">
+      <p class=" flex flex-col lg:flex-row lg:justify-between gap-2 items-center ">Account of:   <p class="font-bold"> {{email}} </p></p>
       <p class=" ">{{ moment().format('DD-MM-YYYY') }}</p>
     </div>
 
