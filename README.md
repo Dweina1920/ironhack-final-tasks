@@ -162,6 +162,8 @@ LonkedIn: [https://linkedin.com/in/dina-yamani] (linkedin.com/in/dina-yamani)
 
 Enlace del proyecto: [ github.com/Dweina1920](https://github.com/Dweina1920/ironhack-final-tasks)
 
+Enlace presentación: [https://www.canva.com/design/DAFbeFJpurM/4HvS8qjG4GqvbtzYvD3V5Q/edit](https://www.canva.com/design/DAFbeFJpurM/4HvS8qjG4GqvbtzYvD3V5Q/edit)
+
 
 
 ####  Experiencia académica
